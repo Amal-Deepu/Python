@@ -1,0 +1,59 @@
+.nav-item{
+    letter-spacing: .2em;
+    font-size:14px;
+    text-transform:uppercese;
+}
+.dropdown-item{
+    letter-spacing: .2em;
+    font-size :14px;
+    text-transform:uppercase
+}
+
+
+.body{
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  }
+
+
+
+.my_footer{
+    background-color:#f8f9fa
+    height:60px;
+}
+.my_footer p{
+    padding-top:20px;
+    font-size:14px;
+}
+
+
+
+
+
+
+.my_row_class{
+    padding-top:15px;
+
+}
+.my_row_class .mx_auto{
+
+    color:#000;
+    font-size:12px;
+}
+
+
+.my_title{
+    font-size:16px;
+    text_transform:uppercase;
+    letter-spacing: .2em;
+}
+
+.my_image{
+    width:100%;
+    height:auto;
+}
+.my_image_padding{
+    padding:5px;
+
+}
