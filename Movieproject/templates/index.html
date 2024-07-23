@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="text-center">All Movie Updates</h2>
+
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                {% for movies in allmovies %}
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <center> <a href="{% url 'Movieapp:details' movies.id %}" ><img src="{{ movies.image.url }}" style="width:150px;height:150px;"></a> </center>
+                            <h5 class="text-center">{{ movies.title }}</h5>
+                            <div class="text-center"><i>{{ movies.year }}</i></div>
+                            <div class="text-center"><i>Rating {{ movies.rating }}</i></div>
+
+                            <div class="text-center"><i>Uploaded by {{ movies.user.username }}</i></div>
+
+                        </div>
+                    </div>
+
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock%}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+     {% if messages %}
+    <div class="alert alert-info" role="alert">
+        {% for message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <div class="card mx-auto" style="width: 50%;">
+        <div class="card-body">
+            <h3 class="text-center">Sign In</h3>
+            <!-- Start of form -->
+            <form action="{% url 'Movieapp:login' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="username" name="username" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="password" name="password" class="form-control">
+                </div>
+
+                <div class="text-center">
+                    <input type="submit" class="btn btn-primary mt-3" value="Sign In">
+                </div>
+
+                <div class="text-center">
+                    <i> Don't have an account? <a href="{% url 'Movieapp:register' %}">Sign Up</a></i>
+                </div>
+
+            </form>
+            <!-- End of form -->
+        </div>
+    </div>
+</div>
+{% endblock %}

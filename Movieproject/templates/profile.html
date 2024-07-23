@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Website{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <style>
+
+        .profile-image {
+            max-width: 150px;
+            height: auto;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'Movieapp:index' %}">Movie Updates</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+
+
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'Movieapp:user_details' user.id %}">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'Movieapp:add_movie' %}">Add Movie</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'Movieapp:logout' %}">Logout</a>
+                </li>
+
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <div class="container mt-4">
+        <h4 align="center">Your Updates</h4>
+        {% block content %}
+        <div class="container">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                {% for movies in allmovies %}
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <center> <a href="{% url 'Movieapp:details' movies.id  %}" ><img src="{{ movies.image.url }}" style="width:150px;height:150px;"></a> </center>
+                            <h5 class="text-center">{{ movies.title }}</h5>
+                            <div class="text-center"><i>{{ movies.year }}</i></div>
+
+                        </div>
+                    </div>
+
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</div>
+
+        {% endblock %}
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-4G0+wrDSu2t6G9bTZDHNYOTk+P5QZ3J1/Cjz0e8eoU3ncs+l1OwDffs67B1z0P4P" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh/jFcZ5TG8g2HRjuB/XE3I7k9kRUy2I6LGzB" crossorigin="anonymous"></script>
+</body>
+</html>
